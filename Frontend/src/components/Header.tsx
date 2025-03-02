@@ -41,7 +41,7 @@ const Header = () => {
 				{
 					navLinks.map((item)=>{
 						return <li className="text-lg hover:text-emerald-400 duration-200 sm:text-xl ml-6 sm:ml-10 mt-2 text-white" key={item.id}>
-							<NavLink className={({isActive})=>isActive?"text-emerald-00":"text-white"} to={item.path}>
+							<NavLink className={({isActive})=>isActive?"text-emerald-300":"text-white"} to={item.path}>
 							<FontAwesomeIcon className="mr-3" icon={item.icon} />{item.title}
 							</NavLink>
 						</li>
