@@ -14,7 +14,7 @@ export const Create = () => {
 
 	const handleChange=(e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>{
 		const {name,value}= e.target;
-		setFormData((prevData)=>({
+		setFormData((prevData)=> ({
 			...prevData,
 			[name]:value
 		}))
@@ -27,12 +27,12 @@ export const Create = () => {
 			</div>
 			<form className='flex flex-col' action="" method='post' onSubmit={handleSubmit}>
 				<div className='flex flex-col mb-7'>
-					<label className='font-semibold text-xl' htmlFor="title">Title</label>
-					<input onChange={handleChange} required type="text" className='border rounded-md p-2' id='title' name='title' placeholder='Enter your title' />
+					<label className='font-semibold text-xl mb-2' htmlFor="title">Title</label>
+					<input onChange={handleChange} required type="text" className='border border-gray-400 rounded-md p-2' id='title' name='title' value={formData.title} placeholder='Enter your title' />
 				</div>
 				<div className='flex flex-col mb-7'>
-					<label className='font-semibold text-xl' htmlFor="description">Description</label>
-					<textarea onChange={handleChange} required name="description" className=" h-40 resize-none border rounded-md p-2" id="description" placeholder='Enter the description'></textarea>
+					<label className='font-semibold text-xl mb-2' htmlFor="description">Description</label>
+					<textarea onChange={handleChange} required name="description" value={formData.description} className=" h-40 resize-none border border-gray-400 rounded-md p-2" id="description" placeholder='Enter the description'></textarea>
 				</div>
 				<div>
 					<Button type='submit' className='hover:cursor-pointer'>Add Note</Button>

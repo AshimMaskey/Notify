@@ -4,6 +4,7 @@ import Home from './components/Home'
 import HomeLayout from './components/layout/HomeLayout'
 import Search from './components/Search'
 import { Create } from './components/Create'
+import Signin from './components/Signin'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='search' element={<Search/>}/>
         <Route path='create' element={<Create/>}/>
       </Route>
+        <Route path='/signin' element={<Signin/>}/>
     </Routes>
     </>
   )
