@@ -5,6 +5,7 @@ import HomeLayout from './components/layout/HomeLayout'
 import Search from './components/Search'
 import { Create } from './components/Create'
 import Signin from './components/Signin'
+import Signup from './components/Signup'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='create' element={<Create/>}/>
       </Route>
         <Route path='/signin' element={<Signin/>}/>
+        <Route path='/signup' element={<Signup/>}/>
     </Routes>
     </>
   )

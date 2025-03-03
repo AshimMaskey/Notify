@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 
 const Signin = () => {
 	interface form{
@@ -17,7 +18,7 @@ const Signin = () => {
 
 	const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
 		const {value,name,files}=e.target;
-		if(name==='photes' && files)
+		if(name==='photo' && files)
 		{
 			setFormData((prev)=>({
 				...prev,
@@ -37,7 +38,13 @@ const Signin = () => {
 
 	const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
 		e.preventDefault();
-		console.log(formData);
+		const data=new FormData();
+		data.append("username", formData.username);
+		data.append("email", formData.email);
+		data.append("password", formData.password);
+		if(formData.photo){
+			data.append("photo", formData.photo);
+		}
 	}
 
 
@@ -51,19 +58,22 @@ const Signin = () => {
 			<form className='flex flex-col' method='post' encType='multipart/form-data' onSubmit={handleSubmit}>
 				<div className='flex flex-col mb-7'>
 					<label className='font-semibold text-xl mb-2' htmlFor="userame">Username:</label>
-					<input className='border border-gray-400 rounded-md p-2' onChange={handleChange} value={formData.username} type="text" id="username" name='username' placeholder='Enter Username...' required />
+					<input className='border w-3xs sm:w-sm border-gray-400 rounded-md p-2' onChange={handleChange} value={formData.username} type="text" id="username" name='username' placeholder='Enter Username...' required />
 				</div>
 				<div className='flex flex-col mb-7'>
 					<label className='font-semibold text-xl mb-2' htmlFor="email">Email:</label>
-					<input className='border border-gray-400 rounded-md p-2' onChange={handleChange} value={formData.email} type="email" id='email' name='email' placeholder='Enter your email...'/>
+					<input className='border w-3xs sm:w-sm border-gray-400 rounded-md p-2' onChange={handleChange} value={formData.email} type="email" id='email' name='email' placeholder='Enter your email...'/>
 				</div>
 				<div className='flex flex-col mb-7'>
 					<label className='font-semibold text-xl mb-2' htmlFor="password">Password:</label>
-					<input className='border border-gray-400 rounded-md p-2' onChange={handleChange} value={formData.password} type="password" id='password' name='password' placeholder='Enter your password...'/>
+					<input className='border w-3xs sm:w-sm border-gray-400 rounded-md p-2' onChange={handleChange} value={formData.password} type="password" id='password' name='password' placeholder='Enter your password...'/>
 				</div>
-				<div className='flex flex-col mb-7'>
+				<div className='flex flex-col mb-2'>
 					<label className='font-semibold text-xl mb-2' htmlFor="photo">Upload Photo:</label>
-					<input className='border border-gray-400 rounded-md p-2' onChange={handleChange} type="file" required id='photo' name='photo' placeholder='Upload your photo...' />
+					<input className='border w-3xs sm:w-sm border-gray-400 rounded-md p-2' onChange={handleChange} type="file" required id='photo' name='photo' placeholder='Upload your photo...' />
+				</div>
+				<div className='mb-2'>
+					Already have an Account? <Link className='text-blue-700 underline hover:text-blue-800' to='/signup'>Sign Up</Link>
 				</div>
 				<div>
 				<Button type='submit' className='hover:cursor-pointer w-full'>Sign In</Button>
